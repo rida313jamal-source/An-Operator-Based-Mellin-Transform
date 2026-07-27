@@ -214,6 +214,7 @@ def render_mellin_section():
             ],
             "closed_form": r"\mathcal{M}_T\{e^{it}\}(\rho, s) = \frac{\Gamma(\rho)}{(s-i)^{\rho}}",
             "classical_limit": r"\lim_{s \to 0^+} \mathcal{M}_T\{e^{it}\}(\rho, s) = \Gamma(\rho) e^{i\rho\pi/2}",
+            "classical_limit for real part": r"\lim_{s \to 0^+} \mathcal{M}_T\{\cos t\}(\rho, s) = \Gamma(\rho) \cos\left(\frac{\pi\rho}{2}\right), \quad 0 < \rho < 1",
             "params": ["rho", "s"],
             "compute_result": lambda rho_val, s_val, **kwargs: math.gamma(rho_val) / ((s_val - 1j)**rho_val) if rho_val > 0 and s_val > 0 else None,
         }
