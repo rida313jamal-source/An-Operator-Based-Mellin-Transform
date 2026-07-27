@@ -199,31 +199,30 @@ def render_mellin_section():
             "compute_result": lambda rho_val, s_val, a_val, **kwargs: math.gamma(rho_val) / ((s_val + a_val)**rho_val) if rho_val > 0 and s_val > 0 and a_val > 0 else None,
         }
 
-        # Case 3: f(t) = e^{it} (مع Real و Imaginary Parts)
-        cases["Case 3: f(t) = e^{it}"] = {
-            "title": "Case 3: f(t) = e^{it}",
-            "function": r"f(t) = e^{it}",
-            "series": r"e^{it} = \sum_{n=0}^{\infty} \frac{i^n}{n!} t^n",
-            "coefficients": r"a_n = \frac{i^n}{n!}",
-            "rank": r"n",
-            "plant_sum": [
-                r"\mathcal{M}_T\{e^{it}\}(\rho, s) = \sum_{n=0}^{\infty} \frac{i^n}{n!} \frac{\Gamma(\rho + n)}{s^{\rho+n}}",
-                r"= \Gamma(\rho) s^{-\rho} \sum_{n=0}^{\infty} \frac{(\rho)_n}{n!} \left(\frac{i}{s}\right)^n",
-                r"= \Gamma(\rho) s^{-\rho} \left(1 - \frac{i}{s}\right)^{-\rho}",
-                r"= \frac{\Gamma(\rho)}{(s-i)^{\rho}}",
-                r"\text{Write } s - i = re^{-i\theta} \text{ with } r = \sqrt{s^2 + 1}, \quad \theta = \arctan\left(\frac{1}{s}\right)",
-                r"\frac{1}{(s - i)^\rho} = r^{-\rho} e^{i\rho\theta}",
-                r"\mathcal{M}_T\{e^{it}\}(\rho, s) = \Gamma(\rho) r^{-\rho} e^{i\rho\theta} = \Gamma(\rho) r^{-\rho} \left[\cos(\rho\theta) + i \sin(\rho\theta)\right]",
-                r"\text{Real Part: } \Gamma(\rho) r^{-\rho} \cos(\rho\theta)",
-                r"\text{Imaginary Part: } \Gamma(\rho) r^{-\rho} \sin(\rho\theta)",
-                r"\text{where } r = \sqrt{s^2 + 1}, \quad \theta = \arctan\left(\frac{1}{s}\right)"
-            ],
-            "closed_form": r"\mathcal{M}_T\{e^{it}\}(\rho, s) = \Gamma(\rho) (s^2 + 1)^{-\rho/2} e^{i\rho\arctan(1/s)}",
-            "classical_limit": r"\lim_{s \to 0^+} \mathcal{M}_T\{e^{it}\}(\rho, s) = \Gamma(\rho) e^{i\rho\pi/2}",
-            "params": ["rho", "s"],
-            "compute_result": lambda rho_val, s_val, **kwargs: math.gamma(rho_val) / ((s_val - 1j)**rho_val) if rho_val > 0 and s_val > 0 else None,
-        }
-
+        # Case 3: f(t) = e^{it}
+cases["Case 3: f(t) = e^{it}"] = {
+    "title": "Case 3: f(t) = e^{it}",
+    "function": r"f(t) = e^{it}",
+    "series": r"e^{it} = \sum_{n=0}^{\infty} \frac{i^n}{n!} t^n",
+    "coefficients": r"a_n = \frac{i^n}{n!}",
+    "rank": r"n",
+    "plant_sum": [
+        r"\mathcal{M}_T\{e^{it}\}(\rho, s) = \sum_{n=0}^{\infty} \frac{i^n}{n!} \frac{\Gamma(\rho + n)}{s^{\rho+n}}",
+        r"= \Gamma(\rho) s^{-\rho} \sum_{n=0}^{\infty} \frac{(\rho)_n}{n!} \left(\frac{i}{s}\right)^n",
+        r"= \Gamma(\rho) s^{-\rho} \left(1 - \frac{i}{s}\right)^{-\rho}",
+        r"= \frac{\Gamma(\rho)}{(s-i)^{\rho}}",
+        r"\text{Write } s - i = re^{-i\theta} \text{ with } r = \sqrt{s^2 + 1}, \quad \theta = \arctan\left(\frac{1}{s}\right)",
+        r"\frac{1}{(s - i)^\rho} = r^{-\rho} e^{i\rho\theta}",
+        r"\mathcal{M}_T\{e^{it}\}(\rho, s) = \Gamma(\rho) r^{-\rho} e^{i\rho\theta} = \Gamma(\rho) r^{-\rho} \left[\cos(\rho\theta) + i \sin(\rho\theta)\right]",
+        r"\text{Real Part: } \Gamma(\rho) r^{-\rho} \cos(\rho\theta)",
+        r"\text{Imaginary Part: } \Gamma(\rho) r^{-\rho} \sin(\rho\theta)",
+        r"\text{where } r = \sqrt{s^2 + 1}, \quad \theta = \arctan\left(\frac{1}{s}\right)"
+    ],
+    "closed_form": r"\mathcal{M}_T\{e^{it}\}(\rho, s) = \Gamma(\rho) (s^2 + 1)^{-\rho/2} e^{i\rho\arctan(1/s)}",
+    "classical_limit": r"\lim_{s \to 0^+} \mathcal{M}_T\{e^{it}\}(\rho, s) = \Gamma(\rho) e^{i\rho\pi/2}",
+    "params": ["rho", "s"],
+    "compute_result": lambda rho_val, s_val, **kwargs: math.gamma(rho_val) / ((s_val - 1j)**rho_val) if rho_val > 0 and s_val > 0 else None,
+}
         # Case 4: f(t) = cos(t)
         cases["Case 4: f(t) = cos(t)"] = {
             "title": "Case 4: f(t) = cos(t)",
