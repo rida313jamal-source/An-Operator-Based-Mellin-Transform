@@ -198,7 +198,6 @@ def render_mellin_section():
             "params": ["rho", "s", "a"],
             "compute_result": lambda rho_val, s_val, a_val, **kwargs: math.gamma(rho_val) / ((s_val + a_val)**rho_val) if rho_val > 0 and s_val > 0 and a_val > 0 else None,
         }
-
 # Case 3: f(t) = e^{it}
 cases["Case 3: f(t) = e^{it}"] = {
     "title": "Case 3: f(t) = e^{it}",
@@ -224,8 +223,9 @@ cases["Case 3: f(t) = e^{it}"] = {
     "compute_result": lambda rho_val, s_val, **kwargs: math.gamma(rho_val) / ((s_val - 1j)**rho_val) if rho_val > 0 and s_val > 0 else None,
 }
 
-        # Case 4: f(t) = cos(t)
-        cases["Case 4: f(t) = cos(t)"] = {
+
+# Case 4: f(t) = cos(t)
+cases["Case 4: f(t) = cos(t)"] = {
             "title": "Case 4: f(t) = cos(t)",
             "function": r"f(t) = \cos t",
             "series": r"\cos t = \sum_{n=0}^{\infty} (-1)^n \frac{t^{2n}}{(2n)!}",
